@@ -1,11 +1,10 @@
 import { ChatOpenAI } from "@langchain/openai";
-import 'dotenv/config';
+import "dotenv/config";
 
 import { SerpAPI } from "@langchain/community/tools/serpapi";
 import { Calculator } from "@langchain/community/tools/calculator";
 import { initializeAgentExecutor } from "langchain/agents";
 import { AgentExecutor } from "langchain/agents";
-
 
 async function main() {
   const llm = new ChatOpenAI({
@@ -28,7 +27,7 @@ async function main() {
     llm,
     "zero-shot-react-description",
     // ログを表示させたい場合は true にする
-    true
+    true,
   );
 
   const inputs = [
@@ -38,14 +37,14 @@ async function main() {
   async function runAgent(agent: AgentExecutor, input: string) {
     try {
       const response = await agent.call({ input });
-      return response['output'];
+      return response["output"];
     } catch (error) {
       return error instanceof Error ? error.message : String(error);
     }
   }
 
   const results = await Promise.all(
-    inputs.map((question) => runAgent(agentExecutor, question))
+    inputs.map((question) => runAgent(agentExecutor, question)),
   );
 
   console.log("=== Agent Results ===");
