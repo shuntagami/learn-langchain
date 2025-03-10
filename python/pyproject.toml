@@ -22,6 +22,7 @@ langchain-anthropic = "^0.3.8"
 langgraph = "^0.3.2"
 tavily-python = "^0.5.1"
 grandalf = "^0.8"
+chainlit = "^2.3.0"
 
 
 [build-system]
